@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>To do List</title>
-</head>
-<body>
+
+{% extends './main.html' %}
+
+{% block content %}
     {% if request.user.is_authenticated %}
-        <p>{{request.user}}</p>
-        <a href="logout">Logout</a>
+    <p>{{request.user}}</p>
+    <a href="logout">Logout</a>
     {% else %}
-    <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'login' %}">Login</a>
     {% endif %}
-    
+
+    <hr>
 
     <h1>My todo list</h1>
     <a href="{% url 'task-create' %}">Add task</a>
+
+    <form action="" method="get">
+        <input type="text" name="search-area" value='{{search_input}}'>
+        <input type="submit" value="Search">
+    </form>
     <br>
     <br>
 
     <table>
-        <tr>
-            <th>Item</th>
-            <th></th>
-            <th></th>
-        </tr>   
-        {% for task in tasks %}
+    <tr>
+        <th>Item</th>
+        <th></th>
+        <th></th>
+    </tr>   
+    {% for task in tasks %}
         <tr>
             <td>{{task.title}}</td>
-            <td><a href="{% url 'task' task.id %}">View</a></td>
             <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
             <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
         </tr>
-        {% empty %}
-            <h3>no item in list </h3>
-        {% endfor %}
+    {% empty %}
+    <h3>no item in list </h3>
+    {% endfor %}
     </table>
-</body>
-</html>
+
+{% endblock content %}
