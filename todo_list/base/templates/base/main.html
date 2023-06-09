@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/task_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/task_form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/register.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,200;1,300&display=swap" rel="stylesheet">
+    <title>To Do Items</title>
+    {% block extrahead %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class= "container">
+
+            {% block content %}
+        
+        {% endblock content %}
+
+    </div>
+</body>
+</html>
